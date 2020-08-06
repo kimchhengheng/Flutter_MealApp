@@ -1,6 +1,9 @@
 # meal_app
 
-A new Flutter application.
+This is meal app. The first screen is the categories screen, it display all the available category of meal, then it allow user to tap of it to display the picture and some detial.
+If the picture box is selected , it would go the detail page of the meal. 
+User can also filter the meal according to some criterial like isVegan, gluten free.
+User can also save their favourite meal
 
 ## Getting Started
 
