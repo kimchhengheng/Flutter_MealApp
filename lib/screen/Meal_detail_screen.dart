@@ -4,8 +4,11 @@ import 'package:meal_app/dummy_data.dart';
 
 class MealDetailScreen extends StatelessWidget {
   static const routeName = "/meals-detail";
+  final Function toggleFav;
+  final Function isFav;
 
 
+  MealDetailScreen(this.toggleFav, this.isFav);
 
   @override
   Widget build(BuildContext context) {
@@ -88,10 +91,14 @@ class MealDetailScreen extends StatelessWidget {
         ],),
       ),
       floatingActionButton: FloatingActionButton(
-        child: Icon(Icons.delete_outline),
-        onPressed: () {
-          Navigator.of(context).pop(mealId);
-        },
+        // we want to change the value of favorite
+        child: Icon(isFav(mealId)? Icons.favorite: Icons.favorite_border),
+          onPressed: () {
+            toggleFav(mealId);
+          },
+//        onPressed: () {
+//          Navigator.of(context).pop(mealId);
+//        }, // we can comment this since hte the pop only when they call .then so it does not matter if we does not call
       ),
     );
   }

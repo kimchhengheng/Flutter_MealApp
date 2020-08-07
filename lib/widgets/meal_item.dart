@@ -11,7 +11,7 @@ class MealItem extends StatelessWidget {
   final int duration;
   final Complexity complexity;
   final Affordability affordability;
-  final Function removeMeal;
+//  final Function removeMeal;
 
   String get complexityText {
     switch(complexity) {
@@ -42,14 +42,17 @@ class MealItem extends StatelessWidget {
     }
   }
   MealItem({@required this.title,@required this.imageUrl,@required this.duration, @required this.complexity,
-  @required this.affordability, @required this.id,@required this.removeMeal});
+  @required this.affordability, @required this.id});
   // we know the id is unique so just past the id we can loop through the dummy data
   void selectMeal(BuildContext context) {
     Navigator.of(context).pushNamed(MealDetailScreen.routeName, arguments: {
       'id': id
-    }).then((result) {
-      removeMeal(id);
     });
+//        .then((result) {
+//      if(result != null ){
+//        removeMeal(id);
+//      }
+//    });
     // the pop return to the one who push it
   }
   @override

@@ -31,7 +31,7 @@ class MainDrawer extends StatelessWidget {
             onTap: () => Navigator.of(context).pushReplacementNamed('/'),
             // you cannot just call TabScreen , it does not display the in the screen you have to move from the current screen to anther screen by using push
             leading: Icon(Icons.restaurant),
-            title: Text("Categories"),
+            title: Text("Meals"),
           ),
           ListTile(
             onTap: () =>

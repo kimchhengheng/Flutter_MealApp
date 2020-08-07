@@ -26,16 +26,46 @@ class _MyAppState extends State<MyApp> {
     'vegetarian':false,
   };
   List<Meal> _availablemeal= DUMMY_MEALS;
+  List<Meal> _favoriteMeal = [];
   // we can avoid mistake by making the class so we dont have to remember what is inside the filters match the filter data or not
   void _saveFilters(Map<String, bool> filterData){
     setState(() {
       _filters= filterData;
+//       returns new list that matches the condition, true in the new list false not the in the new list
+//      Remove where The passed Function must have one argument and return boolean. true means the item should be removed, modify on the list calling
+//  so if we use remove where it would change the value of DUMMY_MEAL also return the remove item
       _availablemeal = DUMMY_MEALS.where((meal) {
-        return null;
-      }).toList();
+        if(_filters['gluten'] && !meal.isGlutenFree)
+          return false;
+        if(_filters['lactose'] && !meal.isLactoseFree)
+          return false;
+        if(_filters['vegan'] && !meal.isVegan)
+          return false;
+        if(_filters['vegetarian'] && !meal.isVegetarian)
+          return false;
+        return true;
+      }
+      ).toList();
     });
   }
-
+// the idea is that when we press button we check if it is in fav Yes remove it, no add to fav, So we have to pass this method to where we handle the button that will pass mealId when button is click
+  void _toggleFavorite(String mealId){
+    final _exitingIndex = _favoriteMeal.indexWhere((meal) => meal.id == mealId);
+//    return -1 if not element in the list
+    if(_exitingIndex >=0 )
+    setState(() {
+      _favoriteMeal.removeAt(_exitingIndex);
+    });
+    else{
+      setState(() {
+        _favoriteMeal.add(DUMMY_MEALS.firstWhere((meal) => meal.id == mealId));
+      });
+    }
+  }
+//  becasue you dont pass the list of favourite meal so in order to check and handle different icon we have to check the meal in favorite or not
+  bool _isMealFavorite(String id){
+    return _favoriteMeal.any((meal) => meal.id == id);// return the true if one of meal id is the same and stop execute after first found, if none return false
+  }
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
@@ -61,10 +91,10 @@ class _MyAppState extends State<MyApp> {
 
       routes: {
         '/': (ctx) =>
-            TabsScreen(), // this is the route for home so it mean in home of scafold flutter gonna call / to return CategoriesScreen()
+            TabsScreen(_favoriteMeal), // this is the route for home so it mean in home of scafold flutter gonna call / to return CategoriesScreen()
         CategoryMealsScreen.routeName: (ctx) => CategoryMealsScreen(_availablemeal),
-        MealDetailScreen.routeName: (ctx) => MealDetailScreen(),
-        FilterScreen.routeName: (ctx) => FilterScreen(_saveFilters),
+        MealDetailScreen.routeName: (ctx) => MealDetailScreen(_toggleFavorite, _isMealFavorite),
+        FilterScreen.routeName: (ctx) => FilterScreen(_filters ,_saveFilters),
       },
 //      another way to deal with navigator through screen like routing in django
 //    routes map like dictionary of avaible rounte when it is called what they would be called the function so when the navigator in the category item push name we know function to call

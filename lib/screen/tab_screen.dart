@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:meal_app/widgets/main_drawer.dart';
+import '../models/meals.dart';
+import '../widgets/main_drawer.dart';
 import './categories_screen.dart';
 import './favourite_screen.dart';
 
@@ -10,23 +11,32 @@ import './favourite_screen.dart';
 /// track of the index of the selected [BottomNavigationBarItem] and call
 /// `setState` to rebuild the bottom navigation bar with the new [currentIndex].
 class TabsScreen extends StatefulWidget {
+  final List<Meal> favMeal;
+
+  TabsScreen(this.favMeal);
+
   @override
   _TabsScreenState createState() => _TabsScreenState();
 }
 
 class _TabsScreenState extends State<TabsScreen> {
-  final List<Map<String, Object>> _pages= [
-    {'title': "Categories", 'page': CategoriesScreen()},
-    {'title': "Favorite", 'page': FavouriteScreen()}
-
-  ];
+  List<Map<String, Object>> _pages;
   int _selectedIndex = 0;
   void _selectPage(int index){
     setState(() {
       _selectedIndex = index;
     });
   }
+  @override
+  void initState() {
+    // TODO: implement initState
+    _pages = [
+      {'title': "Categories", 'page': CategoriesScreen()},
+      {'title': "Favorite", 'page': FavouriteScreen(widget.favMeal)}
 
+    ];
+    super.initState();
+  }
   @override
   Widget build(BuildContext context) {
     return Scaffold(

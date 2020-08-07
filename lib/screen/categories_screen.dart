@@ -20,7 +20,7 @@ class CategoriesScreen extends StatelessWidget {
           }).toList(),
           // this making all the availble list of category we should make it gesture tab
           // without tolist it is only iterable not list
-        gridDelegate: SliverGridDelegateWithMaxCrossAxisExtent(
+          gridDelegate: SliverGridDelegateWithMaxCrossAxisExtent(
           maxCrossAxisExtent: 200,
           childAspectRatio: 3/2, // child aspect mean width 3 height 2
           crossAxisSpacing: 20,
