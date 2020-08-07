@@ -1,9 +1,12 @@
 # meal_app
 
-This is meal app. The first screen is the categories screen, it display all the available category of meal, then it allow user to tap of it to display the picture and some detial.
-If the picture box is selected , it would go the detail page of the meal. 
-User can also filter the meal according to some criterial like isVegan, gluten free.
-User can also save their favourite meal
+This is meal app. 
+The first screen is the categories screen, which display all the category screen with different color
+Then once one of category is display, it list all the meal belong to that category. If one of the meal is selected the details such as ingredient and recipe would be display.
+It is also allow to mark specific meal as favourite.
+In the app bar, we can select the drawer to go to filter screen, then we can filter the meal with some criteria such gluten free, lactose free, vegan or vegertarian. 
+When the filter is save, we can go to the category, so only the filter meal are dispaly.
+We can tab the bottom of screen between cateogry and favorite meal.
 
 ## Getting Started
 
