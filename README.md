@@ -8,6 +8,11 @@ In the app bar, we can select the drawer to go to filter screen, then we can fil
 When the filter is save, we can go to the category, so only the filter meal are dispaly.
 We can tab the bottom of screen between cateogry and favorite meal.
 
+
+![meal-app-kd1rUiekcompressed](https://user-images.githubusercontent.com/43865591/89693332-3b72b780-d8dc-11ea-81bc-2e781e30c43b.gif)
+
+
+
 ## Getting Started
 
 This project is a starting point for a Flutter application.
