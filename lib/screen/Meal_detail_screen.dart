@@ -1,8 +1,11 @@
 import 'package:flutter/material.dart';
+
 import 'package:meal_app/dummy_data.dart';
 
 class MealDetailScreen extends StatelessWidget {
   static const routeName = "/meals-detail";
+
+
 
   @override
   Widget build(BuildContext context) {
@@ -83,6 +86,12 @@ class MealDetailScreen extends StatelessWidget {
             ),
           )
         ],),
+      ),
+      floatingActionButton: FloatingActionButton(
+        child: Icon(Icons.delete_outline),
+        onPressed: () {
+          Navigator.of(context).pop(mealId);
+        },
       ),
     );
   }

@@ -9,11 +9,10 @@ import '../widgets/category_item.dart';
 import '../dummy_data.dart';
 class CategoriesScreen extends StatelessWidget {
 
+//  this would continue from the tab so it should not have app bar
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(title: Text("All category"),),
-      body: GridView(
+    return GridView(
         padding: const EdgeInsets.all(25),
         children:
           DUMMY_CATEGORIES.map( (cat) {
@@ -29,7 +28,7 @@ class CategoriesScreen extends StatelessWidget {
           // with known number of child we can use GridView.count
           // max width(cross axis) then creat many number in the row as possible
         ),
-      ),
+
     );
   }
 }
